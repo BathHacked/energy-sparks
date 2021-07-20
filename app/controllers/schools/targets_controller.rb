@@ -7,7 +7,8 @@ module Schools
     before_action :check_aggregated_school_in_cache, only: :index
 
     def index
-      @progress = TargetsService.new(aggregate_school).progress
+      @current_target = @school.current_target
+      @progress = TargetsService.new(aggregate_school, :electricity).progress
     end
   end
 end
